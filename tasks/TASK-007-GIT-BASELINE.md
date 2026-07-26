@@ -1,6 +1,6 @@
 # TASK-007-GIT-BASELINE：建立 TASK-006 后的本地版本基线
 
-状态：`READY`
+状态：`APPROVED`
 
 ## 用户授权
 

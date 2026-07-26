@@ -10,10 +10,6 @@ export const profile = {
   education: '大专在读（2024—2027）',
   major: '软件技术',
   email: 'rui636290@gmail.com',
-  phone: '你的手机号',
-  wechatQr: '/images/wechat-qr-placeholder.svg',
-  bossLink: '你的Boss直聘链接',
-  github: 'https://github.com/YOUR_USERNAME',
   siteUpdated: '2026-07',
 };
 

@@ -30,10 +30,6 @@ const siteUpdatedDisplay = `${year}年${Number(month)}月`;
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={new URL('/og-image.png', Astro.site ?? Astro.url.origin).href} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content={`${profile.name} · ${profile.title}`} />
     <meta name="twitter:card" content="summary_large_image" />
     <title>{title}</title>
     <script is:inline>

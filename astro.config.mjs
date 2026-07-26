@@ -3,8 +3,8 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: process.env.SITE_URL || 'https://YOUR_USERNAME.github.io',
-  base: process.env.BASE_PATH || '',
+  site: 'https://rui636290-cpu.github.io',
+  base: '',
   output: 'static',
   integrations: [mdx(), sitemap()],
 });

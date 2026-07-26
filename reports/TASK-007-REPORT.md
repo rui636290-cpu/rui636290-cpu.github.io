@@ -19,9 +19,9 @@
 
 ### 文档提交
 
-- **SHA**：`fa4665c`
+- **SHA**：`b6f3c50`
 - **消息**：`docs: record TASK-007 execution`
-- **范围**：1 file, 102 insertions — 仅 `reports/TASK-007-REPORT.md`
+- **范围**：1 file, 106 insertions — 仅 `reports/TASK-007-REPORT.md`
 
 ## 实际运行命令与结果
 
@@ -85,7 +85,7 @@ git commit -m "docs: record TASK-007 execution"
 - **工作区状态**：干净
 - **`git log --oneline -2`**：
   ```
-  fa4665c docs: record TASK-007 execution
+  b6f3c50 docs: record TASK-007 execution
   f98bb47 chore: establish TASK-006 baseline
   ```
 - **`git remote -v`**：无输出（无远程仓库）
