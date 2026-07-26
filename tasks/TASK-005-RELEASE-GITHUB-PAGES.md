@@ -1,6 +1,6 @@
 # TASK-005-RELEASE：发布到丰瑞的 GitHub Pages
 
-状态：`READY`
+状态：`BLOCKED`
 
 ## 用户授权
 

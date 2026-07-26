@@ -1,6 +1,6 @@
 # 当前任务
 
-任务文件：`tasks/TASK-005-RELEASE-GITHUB-PAGES.md`
+任务文件：`tasks/TASK-010-RESUME-RELEASE.md`
 
 状态：`READY`
 
