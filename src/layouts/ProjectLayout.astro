@@ -1,0 +1,30 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { profile } from '../data/profile';
+
+const { project } = Astro.props;
+const d = project.data;
+const statusLabels: Record<string, string> = {
+  idea: '构想', planning: '规划中', prototype: '原型中', development: '开发中',
+  alpha: 'Alpha', testing: '测试中', released: '已完成', archived: '已归档',
+};
+---
+
+<BaseLayout title={`${d.title}｜${profile.name} 项目案例`} description={d.summary}>
+  <article class="case-study">
+    <header class="case-hero">
+      <a class="back-link" href="/">← 返回首页</a>
+      <h1>{d.title}</h1>
+      <p class="case-summary">{d.summary}</p>
+      <dl class="case-facts">
+        <div><dt>角色</dt><dd>{d.role}</dd></div>
+        <div><dt>状态</dt><dd>{statusLabels[d.status] ?? d.status}</dd></div>
+        <div><dt>目标用户</dt><dd>{d.targetUsers.join('、')}</dd></div>
+        <div><dt>最近更新</dt><dd>{d.lastUpdated.toLocaleDateString('zh-CN')}</dd></div>
+        {d.tags.length > 0 && <div><dt>标签</dt><dd>{d.tags.join(' · ')}</dd></div>}
+      </dl>
+    </header>
+
+    <div class="case-content prose"><slot /></div>
+  </article>
+</BaseLayout>

@@ -1,0 +1,87 @@
+---
+import '../styles/global.css';
+import { navigation } from '../data/navigation';
+import { profile } from '../data/profile';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = `${profile.name}｜${profile.title}`,
+  description = '天猫运营实习经验，正在转向AI产品方向。展示项目案例、实习经历与在线简历，寻找杭州AI产品助理或AI产品经理实习机会。',
+} = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
+const [year, month] = profile.siteUpdated.split('-');
+const siteUpdatedDisplay = `${year}年${Number(month)}月`;
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#F7F7F5" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL('/og-image.png', Astro.site ?? Astro.url.origin).href} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={`${profile.name} · ${profile.title}`} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>{title}</title>
+    <script is:inline>
+      (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark')}})();
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到主要内容</a>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="返回首页">{profile.name}</a>
+      <nav aria-label="主导航">
+        {navigation.map((item) => <a href={item.href}>{item.label}</a>)}
+        <button id="theme-toggle" class="theme-toggle" aria-label="切换深色模式" title="切换深色模式">
+          <span class="theme-icon-light" aria-hidden="true">☀</span>
+          <span class="theme-icon-dark" aria-hidden="true">☾</span>
+        </button>
+      </nav>
+      <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="打开菜单" aria-expanded="false">
+        <span class="menu-bar"></span><span class="menu-bar"></span><span class="menu-bar"></span>
+      </button>
+    </header>
+
+    <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+      <div class="mobile-menu-inner">
+        {navigation.map((item) => <a href={item.href}>{item.label}</a>)}
+        <button id="mobile-theme-toggle" class="theme-toggle">切换深色模式</button>
+      </div>
+    </div>
+
+    <main id="main"><slot /></main>
+
+    <footer class="site-footer">
+      <p><strong>{profile.name}</strong> · {profile.title}</p>
+      <p>内容仅包含公开信息 · 最近更新：<time datetime={profile.siteUpdated}>{siteUpdatedDisplay}</time></p>
+    </footer>
+
+    <script is:inline>
+      function toggleTheme(){var h=document.documentElement;h.classList.toggle('dark');var isDark=h.classList.contains('dark');localStorage.setItem('theme',isDark?'dark':'light')}
+      document.getElementById('theme-toggle').addEventListener('click',toggleTheme);
+      document.getElementById('mobile-theme-toggle')?.addEventListener('click',function(){toggleTheme();closeMenu()});
+      var menu=document.getElementById('mobile-menu');
+      var btn=document.getElementById('mobile-menu-btn');
+      function openMenu(){menu.setAttribute('aria-hidden','false');btn.setAttribute('aria-expanded','true');btn.setAttribute('aria-label','关闭菜单');document.body.style.overflow='hidden'}
+      function closeMenu(){menu.setAttribute('aria-hidden','true');btn.setAttribute('aria-expanded','false');btn.setAttribute('aria-label','打开菜单');document.body.style.overflow=''}
+      btn.addEventListener('click',function(){menu.getAttribute('aria-hidden')==='true'?openMenu():closeMenu()});
+      menu.addEventListener('click',function(e){if(e.target===menu)closeMenu()});
+      document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu()});
+      menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeMenu)});
+    </script>
+  </body>
+</html>

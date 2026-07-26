@@ -1,0 +1,35 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { profile } from '../../data/profile';
+
+const projects = (await getCollection('projects', ({ data }) => !data.draft))
+  .sort((a, b) => a.data.priority - b.data.priority || b.data.lastUpdated.getTime() - a.data.lastUpdated.getTime());
+
+const statusLabels: Record<string, string> = {
+  idea: '构想', planning: '规划中', prototype: '原型中', development: '开发中',
+  alpha: 'Alpha', testing: '测试中', released: '已完成', archived: '已归档',
+};
+---
+
+<BaseLayout title={`项目案例｜${profile.name}作品集`} description="从问题、决策到验证，展示真实项目案例。">
+  <header class="page-hero">
+    <h1>项目案例</h1>
+    <p>每个项目展示真实背景、我的角色、关键决策和当前结果。</p>
+  </header>
+  <section class="section" style="padding-top:1rem;">
+    {projects.map((project) => {
+      const d = project.data;
+      return (
+        <a class="project-list-card" href={`/projects/${d.slug}/`}>
+          <div class="project-meta">
+            <span>{statusLabels[d.status] ?? d.status}</span>
+            <span>{d.role}</span>
+          </div>
+          <h3>{d.title}</h3>
+          <p>{d.summary}</p>
+        </a>
+      );
+    })}
+  </section>
+</BaseLayout>

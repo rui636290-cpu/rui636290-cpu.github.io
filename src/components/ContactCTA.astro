@@ -1,0 +1,17 @@
+---
+import { profile } from '../data/profile';
+---
+
+<section class="section" id="contact" aria-labelledby="contact-title">
+  <div class="section-heading">
+    <p class="eyebrow">联系</p>
+    <h2 id="contact-title">与我联系</h2>
+  </div>
+  <div class="contact-block">
+    <p>如有 AI 产品助理、产品运营或相关岗位机会，欢迎通过以下方式联系：</p>
+    <p>邮箱：<a href={`mailto:${profile.email}`}>{profile.email}</a></p>
+    <div class="contact-note">
+      <p>正式简历 PDF 尚未提供，当前仅支持在线简历。如需其他联系方式，请通过邮箱获取。</p>
+    </div>
+  </div>
+</section>

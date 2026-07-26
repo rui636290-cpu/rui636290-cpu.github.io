@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { profile, aboutMe } from '../data/profile';
+---
+
+<BaseLayout title={`在线简历｜${profile.name}`} description={`${profile.name}的个人简历，电商运营与AI产品方向。`}>
+  <article class="resume-page">
+    <header>
+      <h1>{profile.name}</h1>
+      <p class="resume-role">{profile.target}</p>
+      <ul>
+        <li>{profile.school} · {profile.major} · {profile.education}</li>
+        <li>{profile.city}</li>
+      </ul>
+      <div class="resume-actions">
+        <button class="button button-primary print-button" onclick="window.print()">打印 / 保存为 PDF</button>
+      </div>
+    </header>
+
+    <section>
+      <h2>个人简介</h2>
+      <p>{aboutMe.summary}</p>
+    </section>
+
+    <section>
+      <h2>实习经历</h2>
+      <h3>天猫运营实习生</h3>
+      <p class="resume-meta">义乌市屹辉服饰有限公司 · 2025.06—2025.09 · 浙江义乌</p>
+      <p>负责天猫防晒用品类目运营，围绕商品运营、市场分析、产品规划和数据整理开展工作，参与细分类目的产品布局与运营策略制定。</p>
+      <ul>
+        <li>商品上架、信息维护、标题优化、图片优化和日常运营数据整理</li>
+        <li>参与基础付费推广调整，根据商品表现和推广数据协助完成日常优化</li>
+        <li>分析不同价格区间的销量占比及变化趋势，参与制定产品价格定位方案，减少单纯依赖低价竞争</li>
+        <li>拆解类目 TOP 竞品的产品结构、价格策略、核心卖点和市场定位，为产品规划提供参考</li>
+        <li>根据历史销售数据和市场变化，协助团队分析并优化细分类目的产品布局</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>项目经历</h2>
+      <h3>防晒用品细分类目市场规划项目</h3>
+      <p>通过生意参谋和边界 BI 的市场数据、价格带和竞品分析，判断消费者购买较为集中的价格区间。输出市场分析及规划建议，协助优化价格定位和产品结构，相关品类销量及利润表现有所改善。</p>
+    </section>
+
+    <section>
+      <h2>技能与工具</h2>
+      <p>商品运营、市场调研、数据分析、竞品分析、价格区间分析、产品规划、生意参谋、边界 BI。</p>
+    </section>
+
+    <section>
+      <h2>教育经历</h2>
+      <p>{profile.school} · {profile.major} · {profile.education}</p>
+    </section>
+
+    <section>
+      <h2>联系方式</h2>
+      <div class="resume-contact">
+        <p>邮箱：<a href={`mailto:${profile.email}`}>{profile.email}</a></p>
+        {profile.phone !== '你的手机号' && <p>手机：{profile.phone}</p>}
+      </div>
+    </section>
+  </article>
+</BaseLayout>
