@@ -1,6 +1,6 @@
 # TASK-013-RELEASE-DARK-EDITORIAL-REDESIGN：提交、推送并验证 V3 改版
 
-状态：`READY`
+状态：`CHANGES_REQUESTED`
 
 ## 用户授权
 
@@ -176,4 +176,3 @@ git push origin main
 - 本地 `main` 与 `origin/main` 一致；
 - 工作区干净；
 - 未产生额外分支、标签或 workflow run。
-

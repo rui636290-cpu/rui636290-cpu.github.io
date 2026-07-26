@@ -86,14 +86,26 @@ To https://github.com/rui636290-cpu/rui636290-cpu.github.io
 - 包含所有必需章节：个人简介、实习经历、项目经历、技能与工具、教育经历、联系方式
 - 打印按钮："打印 / 保存为 PDF" 存在
 
-## 7. 最终仓库状态
+## 7. 审计提交
 
-- 本地 `main` = `d080247*`（含本报告提交后为审计提交 SHA）
-- `origin/main` = 本地 `main`
-- 工作区干净
+| 项目 | 值 |
+|------|-----|
+| 提交 SHA | `f42392a36067bb9442179930828684ebd7c516c4` |
+| 提交信息 | `docs: record TASK-013 release [skip ci]` |
+| 文件 | `reports/TASK-013-REPORT.md`（新建，+102 行） |
+| Push | `d080247..f42392a  main -> main`（普通推送） |
+| 触发部署 | 否（`[skip ci]` 生效） |
+
+## 8. 最终仓库状态
+
+- 本地 `main` = `f42392a36067bb9442179930828684ebd7c516c4`
+- `origin/main` = `f42392a36067bb9442179930828684ebd7c516c4`
+- HEAD == origin/main：✅
+- 工作区：干净（`git status --short --branch` 显示 `## main...origin/main`）
+- 最终 Actions run：`d080247` (success)，`f42392a` 未触发新部署
 - 无额外分支、标签或 workflow run
 
-## 8. 未完成项与风险
+## 9. 未完成项与风险
 
 - 无。
 
