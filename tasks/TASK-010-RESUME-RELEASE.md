@@ -1,6 +1,6 @@
 # TASK-010-RESUME-RELEASE：认证就绪后恢复 GitHub Pages 发布
 
-状态：`READY`
+状态：`APPROVED`
 
 ## 解锁确认
 

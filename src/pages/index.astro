@@ -11,93 +11,62 @@ const featured = projects.filter((project) => project.data.featured);
 ---
 
 <BaseLayout>
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero-text">
-      <h1>{profile.name}，寻找 <em>{profile.target}</em></h1>
-      <div class="hero-meta">
-        <span>{profile.city}</span><span class="dot" aria-hidden="true"></span>
-        <span>{profile.school}</span><span class="dot" aria-hidden="true"></span>
-        <span>{profile.education}</span>
-      </div>
-      <p class="hero-subtitle">{profile.subtitle}</p>
-      <div class="hero-actions">
-        <a class="button button-primary" href="/projects/sunscreen-category/">查看代表项目</a>
-        <a class="button button-secondary" href="/resume/">查看在线简历</a>
-        <a class="button button-ghost-underline" href={`mailto:${profile.email}`}>邮箱联系</a>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <img src="/images/analysis-path.svg" alt="分析路径：市场数据 → 价格区间 → 竞品拆解 → 产品规划建议" width="360" height="440" loading="eager" />
-    </div>
-  </section>
+  <div class="home-layout">
+    <aside class="sidebar">
+      <h1 class="sidebar-name">{profile.name}</h1>
+      <p class="sidebar-role">{profile.target}</p>
+      <p class="sidebar-city">{profile.city}</p>
+      <p class="sidebar-intro">{profile.subtitle}</p>
 
-  <!-- Quick facts bar -->
-  <section class="quick-facts" aria-label="快速事实">
-    <div class="quick-facts-inner">
-      <div class="quick-fact-item">
-        <span class="label">实习经历</span>
-        <span class="value">天猫运营实习生 · 义乌市屹辉服饰有限公司</span>
-      </div>
-      <div class="quick-fact-item">
-        <span class="label">实习时间</span>
-        <span class="value">2025.06 — 2025.09 · 浙江义乌</span>
-      </div>
-      <div class="quick-fact-item">
-        <span class="label">教育背景</span>
-        <span class="value">{profile.school} · {profile.major} · {profile.education}</span>
-      </div>
-      <div class="quick-fact-item">
-        <span class="label">联系方式</span>
-        <span class="value"><a href={`mailto:${profile.email}`}>{profile.email}</a></span>
-      </div>
-    </div>
-  </section>
+      <ul class="sidebar-nav">
+        <li><a href="#capabilities">能力证据</a></li>
+        <li><a href="#projects">代表项目</a></li>
+        <li><a href="#experience">实习经历</a></li>
+        <li><a href="#about">关于</a></li>
+      </ul>
 
-  <!-- Capabilities -->
-  <section class="capabilities-section" id="capabilities" aria-labelledby="cap-title">
-    <div class="section-heading">
-      <p class="eyebrow">我能带来的能力</p>
-      <h2 id="cap-title">三项能力，基于真实经历</h2>
-    </div>
-    <div class="capabilities-grid">
-      {capabilities.map((cap) => (
-        <article class="capability-card">
-          <span class="cap-icon" aria-hidden="true">{cap.icon}</span>
-          <h3>{cap.title}</h3>
-          <p>{cap.description}</p>
-        </article>
-      ))}
-    </div>
-  </section>
+      <div class="sidebar-perm">
+        <a href="/resume/">在线简历 →</a>
+        <a href={`mailto:${profile.email}`}>邮箱联系 →</a>
+      </div>
+    </aside>
 
-  <!-- Featured project -->
-  <section class="section" id="projects" aria-labelledby="projects-title">
-    <div class="section-heading">
-      <p class="eyebrow">代表项目</p>
-      <h2 id="projects-title">项目经历</h2>
-    </div>
-    {featured.length > 0 ? (
-      featured.map((project, index) => <ProjectCard project={project} index={index} />)
-    ) : (
-      <p style="color:var(--muted)">暂无已发布项目。</p>
-    )}
-  </section>
+    <div class="content">
+      <!-- Capabilities: numbered text lines -->
+      <section id="capabilities" aria-labelledby="cap-title">
+        <div class="section-heading">
+          <p class="eyebrow">能力证据</p>
+          <h2 id="cap-title">三项能力，基于真实经历</h2>
+        </div>
+        <ol class="cap-list">
+          {capabilities.map((cap) => (
+            <li><strong>{cap.title}</strong> — {cap.description}</li>
+          ))}
+        </ol>
+      </section>
 
-  <!-- Work experience -->
-  <section class="section" id="experience" aria-labelledby="exp-title">
-    <div class="section-heading">
-      <p class="eyebrow">经历</p>
-      <h2 id="exp-title">实习经历</h2>
-    </div>
-    <div class="timeline">
-      <article class="timeline-item">
-        <div class="timeline-dot" aria-hidden="true"></div>
-        <div class="timeline-content">
-          <div class="timeline-meta">
-            <span>义乌市屹辉服饰有限公司</span>
-            <span>2025.06—2025.09 · 浙江义乌</span>
-          </div>
+      <!-- Featured project -->
+      <section id="projects" aria-labelledby="projects-title">
+        <div class="section-heading">
+          <p class="eyebrow">代表项目</p>
+          <h2 id="projects-title">项目经历</h2>
+        </div>
+        {featured.length > 0 ? (
+          featured.map((project, index) => <ProjectCard project={project} index={index} />)
+        ) : (
+          <p style="color:var(--muted)">暂无已发布项目。</p>
+        )}
+      </section>
+
+      <!-- Work experience -->
+      <section id="experience" aria-labelledby="exp-title">
+        <div class="section-heading">
+          <p class="eyebrow">经历</p>
+          <h2 id="exp-title">实习经历</h2>
+        </div>
+        <div class="exp-block">
+          <span class="exp-company">义乌市屹辉服饰有限公司</span>
+          <p class="exp-meta">2025.06 — 2025.09 · 浙江义乌</p>
           <h3>天猫运营实习生</h3>
           <p>负责天猫防晒用品类目运营，围绕商品运营、市场分析、产品规划和数据整理开展工作，参与细分类目的产品布局与运营策略制定。</p>
           <ul>
@@ -108,22 +77,22 @@ const featured = projects.filter((project) => project.data.featured);
             <li>根据历史销售数据和市场变化，协助团队分析并优化细分类目的产品布局</li>
           </ul>
         </div>
-      </article>
-    </div>
-  </section>
+      </section>
 
-  <!-- About + Education -->
-  <section class="section" id="about" aria-labelledby="about-title">
-    <div class="section-heading">
-      <p class="eyebrow">关于</p>
-      <h2 id="about-title">关于我</h2>
-    </div>
-    <div class="about-text">
-      <p>{aboutMe.summary}</p>
-      <p>{profile.school} · {profile.major} · {profile.education}</p>
-    </div>
-  </section>
+      <!-- About + Education -->
+      <section id="about" aria-labelledby="about-title">
+        <div class="section-heading">
+          <p class="eyebrow">关于</p>
+          <h2 id="about-title">关于我</h2>
+        </div>
+        <div class="about-block">
+          <p>{aboutMe.summary}</p>
+          <p>{profile.school} · {profile.major} · {profile.education}</p>
+        </div>
+      </section>
 
-  <!-- Contact -->
-  <ContactCTA />
+      <!-- Contact -->
+      <ContactCTA />
+    </div>
+  </div>
 </BaseLayout>

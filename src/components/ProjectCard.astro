@@ -17,14 +17,9 @@ interface Props {
 
 const { project } = Astro.props;
 const d = project.data;
-const statusLabels: Record<string, string> = {
-  idea: '构想', planning: '规划中', prototype: '原型中', development: '开发中',
-  alpha: 'Alpha', testing: '测试中', released: '已完成', archived: '已归档',
-};
 ---
 
-<article class="project-featured">
-  <span class="pf-label">{statusLabels[d.status] ?? d.status}</span>
+<a class="project-featured" href={`/projects/${d.slug}/`}>
   <h3>{d.title}</h3>
   <p class="pf-summary">{d.summary}</p>
   <div class="pf-meta">
@@ -49,5 +44,5 @@ const statusLabels: Record<string, string> = {
       </dd>
     </div>
   </dl>
-  <a class="pf-link" href={`/projects/${d.slug}/`}>阅读完整案例 →</a>
-</article>
+  <span class="pf-link">阅读完整案例 →</span>
+</a>

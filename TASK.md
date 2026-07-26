@@ -1,6 +1,6 @@
 # 当前任务
 
-任务文件：`tasks/TASK-010-RESUME-RELEASE.md`
+任务文件：`tasks/TASK-013-RELEASE-DARK-EDITORIAL-REDESIGN.md`
 
 状态：`READY`
 
